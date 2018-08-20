@@ -9,10 +9,29 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    var isLightTheme = true
+    
+    @IBOutlet weak var lblHello: UILabel!
+    @IBOutlet weak var txtName: UITextField!
+    
+    @IBAction func clickButton(_ sender: Any) {
+        self.lblHello.text = "Hello \(self.txtName.text!)"
+    }
+    
+    @IBAction func changeTheme(_ sender: Any) {
+        view.backgroundColor = UIColor.black
+        for eachView in view.subviews{
+            eachView.backgroundColor = UIColor.black
+            if let lable = eachView as? UILabel{
+                lable.textColor = UIColor.white
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+//        self.lblHello.text = "Hello World! after view loaded"
     }
 
     override func didReceiveMemoryWarning() {
