@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController{
     
     var isLightTheme = true
     
@@ -33,6 +33,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.lblHello.text = "Hello World! after view loaded"
         print("changed")
+        
+        var a = 10
+        a = a + 1
+        print(a)
     }
 
     override func didReceiveMemoryWarning() {
