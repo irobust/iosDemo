@@ -31,7 +31,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.lblHello.text = "Hello World! after view loaded"
+        self.lblHello.text = "Hello World! after view loaded"
+        print("test new branch")
     }
 
     override func didReceiveMemoryWarning() {
