@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class TableViewController: UITableViewController {
     
@@ -26,14 +27,23 @@ class TableViewController: UITableViewController {
                         "Test motion detectors",
                         "Test smoke alarms"]
 
+    func fetchData(url: String){
+        Alamofire.request(url, method: .get).responseString(completionHandler: { (response) in
+            print(response.value ?? "no value")
+        }).responseJSON(completionHandler: { (response) in
+            print(response.value ?? "no value")
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        fetchData(url: "https://jsonplaceholder.typicode.com/todos")
     }
 
     override func didReceiveMemoryWarning() {
@@ -94,6 +104,26 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You just selected row \(indexPath.row) on section \(indexPath.section)")
+        
+        var message = ""
+        
+        switch indexPath.section {
+        case 0:
+            message = dailyTasks[indexPath.row]
+        case 1:
+            message = weeklyTasks[indexPath.row]
+        case 2:
+            message = monthlyTasks[indexPath.row]
+        default:
+            message = ""
+        }
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let destination = storyBoard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        
+        destination.message = message
+        self.navigationController?.pushViewController( destination, animated: true)
+        
     }
     
     /*

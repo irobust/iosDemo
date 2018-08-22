@@ -19,6 +19,7 @@ class CustomTableViewCell: UITableViewCell {
         // Initialization code
         
         imgAvatar.image = UIImage(named: "clock")
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
