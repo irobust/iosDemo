@@ -95,7 +95,7 @@
                                                 <constraint firstAttribute="width" constant="104" id="bEq-Ib-FEy"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVr-nU-aK7">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVr-nU-aK7">
                                             <rect key="frame" x="158" y="32" width="201" height="59"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                             <nil key="textColor"/>
@@ -123,7 +123,16 @@
                             <outlet property="delegate" destination="zE7-Pe-6bY" id="DOD-Do-4kX"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="n2F-tU-Fum"/>
+                    <navigationItem key="navigationItem" id="n2F-tU-Fum">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="HEJ-M7-Vd6">
+                            <connections>
+                                <action selector="doEditable:" destination="zE7-Pe-6bY" id="bhY-aI-1sN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tblTask" destination="iVD-gx-2a0" id="tZv-Pm-nRa"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bod-xR-dY3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

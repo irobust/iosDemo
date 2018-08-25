@@ -11,7 +11,14 @@ import Alamofire
 
 class TableViewController: UITableViewController {
     
-    let dailyTasks = ["Check all windows",
+    @IBOutlet var tblTask: UITableView!
+    
+    @IBAction func doEditable(_ sender: Any) {
+        self.tblTask.isEditing = true
+        self.tblTask.setEditing(true, animated: false)
+    }
+    
+    let dailyTasks = ["Check all windows Test \n other string \n Some Text",
                       "Check all doors",
                       "Is the boiler fueled?",
                       "Check the mailbox",
@@ -26,24 +33,43 @@ class TableViewController: UITableViewController {
     let monthlyTasks = ["Test security alarm",
                         "Test motion detectors",
                         "Test smoke alarms"]
+    
+    var products: [Product] = []
+    
+    static let SERVICEURL = "http://localhost:3000/products"
 
     func fetchData(url: String){
         Alamofire.request(url, method: .get).responseString(completionHandler: { (response) in
             print(response.value ?? "no value")
         }).responseJSON(completionHandler: { (response) in
-            print(response.value ?? "no value")
+            let decoder = JSONDecoder()
+            
+            do{
+                self.products = try decoder.decode([Product].self, from: response.data!)
+                self.tblTask.reloadData()
+//                print(products[0].productName)
+//                print(products[0].comments[0].message)
+            }catch{
+                print("Error: Can't decode json data")
+            }
         })
+    }
+    
+    func doSomethind() throws{
+        throw NSError()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tblTask.estimatedRowHeight = 43
+        self.tblTask.rowHeight = UITableViewAutomaticDimension
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        fetchData(url: "https://jsonplaceholder.typicode.com/todos")
+        fetchData(url: TableViewController.SERVICEURL)
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,10 +82,12 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return self.dailyTasks.count
+            return self.products.count
         case 1:
-            return self.weeklyTasks.count
+            return self.dailyTasks.count
         case 2:
+            return self.weeklyTasks.count
+        case 3:
             return self.monthlyTasks.count
         default:
             return 0
@@ -67,21 +95,21 @@ class TableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-//        let cell = CustomTableViewCell()
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "normalcell") as! CustomTableViewCell
         
         switch indexPath.section {
         case 0:
-            cell.lblTask?.text = self.dailyTasks[indexPath.row]
+            cell.lblTask?.text = self.products[indexPath.row].productName
         case 1:
-            cell.lblTask?.text = self.weeklyTasks[indexPath.row]
+            cell.lblTask?.text = self.dailyTasks[indexPath.row]
         case 2:
+            cell.lblTask?.text = self.weeklyTasks[indexPath.row]
+        case 3:
             cell.lblTask?.text = self.monthlyTasks[indexPath.row]
         default:
             cell.lblTask?.text = "No data"
@@ -92,10 +120,12 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Daily Tasks"
+            return "Products"
         case 1:
-            return "Weekly Tasks"
+            return "Daily Tasks"
         case 2:
+            return "Weekly Tasks"
+        case 3:
             return "Monthly Tasks"
         default:
             return nil
@@ -109,10 +139,12 @@ class TableViewController: UITableViewController {
         
         switch indexPath.section {
         case 0:
-            message = dailyTasks[indexPath.row]
+            message = products[indexPath.row].productName
         case 1:
-            message = weeklyTasks[indexPath.row]
+            message = dailyTasks[indexPath.row]
         case 2:
+            message = weeklyTasks[indexPath.row]
+        case 3:
             message = monthlyTasks[indexPath.row]
         default:
             message = ""
@@ -125,36 +157,36 @@ class TableViewController: UITableViewController {
         self.navigationController?.pushViewController( destination, animated: true)
         
     }
-    
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        if(indexPath.section == 0){
+            return true
+        }else{
+            return false
+        }
     }
-    */
+    
 
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            self.products.remove(at: indexPath.row)
+            
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            self.removeData(row: products[indexPath.row].id)
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
+    func removeData(row: Int){
+        Alamofire.request("\(TableViewController.SERVICEURL)/\(row + 1)" ,method: .delete)
+        print("\(TableViewController.SERVICEURL)/\(row + 1)")
+
+    }
 
     /*
     // Override to support rearranging the table view.

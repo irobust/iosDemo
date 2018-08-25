@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		841A12D8212D1E9E00D45464 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A12D7212D1E9E00D45464 /* DetailViewController.swift */; };
+		84657B272131117000ADC87E /* product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84657B262131117000ADC87E /* product.swift */; };
 		84922AD0212BCABC0044E0F4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84922ACF212BCABC0044E0F4 /* TableViewController.swift */; };
 		84922AD2212BE6710044E0F4 /* SimpleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84922AD1212BE6710044E0F4 /* SimpleViewController.swift */; };
 		84922AD4212C043D0044E0F4 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84922AD3212C043D0044E0F4 /* CustomTableViewCell.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		841A12D7212D1E9E00D45464 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		84657B262131117000ADC87E /* product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = product.swift; sourceTree = "<group>"; };
 		84922ACF212BCABC0044E0F4 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		84922AD1212BE6710044E0F4 /* SimpleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleViewController.swift; sourceTree = "<group>"; };
 		84922AD3212C043D0044E0F4 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				84922AD1212BE6710044E0F4 /* SimpleViewController.swift */,
 				84922AD3212C043D0044E0F4 /* CustomTableViewCell.swift */,
 				841A12D7212D1E9E00D45464 /* DetailViewController.swift */,
+				84657B262131117000ADC87E /* product.swift */,
 			);
 			path = Hello;
 			sourceTree = "<group>";
@@ -177,15 +180,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Hello/Pods-Hello-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 			);
@@ -199,15 +198,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Hello-checkManifestLockResult.txt",
 			);
@@ -224,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84922AD4212C043D0044E0F4 /* CustomTableViewCell.swift in Sources */,
+				84657B272131117000ADC87E /* product.swift in Sources */,
 				84922AD2212BE6710044E0F4 /* SimpleViewController.swift in Sources */,
 				84F62D75212A784900B42790 /* ViewController.swift in Sources */,
 				84F62D73212A784900B42790 /* AppDelegate.swift in Sources */,
