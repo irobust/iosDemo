@@ -18,6 +18,8 @@ class TableViewController: UITableViewController {
         self.tblTask.setEditing(true, animated: false)
     }
     
+    let activityIndicatorView = UIActivityIndicatorView()
+    
     let dailyTasks = ["Check all windows Test \n other string \n Some Text",
                       "Check all doors",
                       "Is the boiler fueled?",
@@ -64,6 +66,12 @@ class TableViewController: UITableViewController {
         
         self.tblTask.estimatedRowHeight = 43
         self.tblTask.rowHeight = UITableViewAutomaticDimension
+        
+        activityIndicatorView.center = self.view.center
+        activityIndicatorView.hidesWhenStopped = true
+        activityIndicatorView.activityIndicatorViewStyle = .gray
+        
+        view.addSubview(activityIndicatorView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -170,23 +178,33 @@ class TableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            self.products.remove(at: indexPath.row)
             
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            self.removeData(row: products[indexPath.row].id)
+            activityIndicatorView.startAnimating()
+            UIApplication.shared.beginIgnoringInteractionEvents()
+            self.removeData(rowId: products[indexPath.row].id, handler: { (response) in
+                
+                self.products.remove(at: indexPath.row)
+                
+                // Delete the row from the data source
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                
+                self.activityIndicatorView.stopAnimating()
+                UIApplication.shared.endIgnoringInteractionEvents()
+            })
             
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
     
-    func removeData(row: Int){
-        Alamofire.request("\(TableViewController.SERVICEURL)/\(row + 1)" ,method: .delete)
-        print("\(TableViewController.SERVICEURL)/\(row + 1)")
+    func removeData(rowId: Int, handler: @escaping (DataResponse<Any>) -> Void){
+        Alamofire.request("\(TableViewController.SERVICEURL)/\(rowId)" ,method: .delete).responseJSON(completionHandler: handler)
+        
+        print("\(TableViewController.SERVICEURL)/\(rowId)")
 
     }
+    
+    
 
     /*
     // Override to support rearranging the table view.

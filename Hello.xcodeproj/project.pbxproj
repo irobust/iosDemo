@@ -12,6 +12,10 @@
 		84922AD0212BCABC0044E0F4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84922ACF212BCABC0044E0F4 /* TableViewController.swift */; };
 		84922AD2212BE6710044E0F4 /* SimpleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84922AD1212BE6710044E0F4 /* SimpleViewController.swift */; };
 		84922AD4212C043D0044E0F4 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84922AD3212C043D0044E0F4 /* CustomTableViewCell.swift */; };
+		84D7F59821325911008D5F65 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F59721325911008D5F65 /* LoginViewController.swift */; };
+		84D7F59A21328574008D5F65 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F59921328574008D5F65 /* SettingsViewController.swift */; };
+		84D7F59F21328D01008D5F65 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F59E21328D01008D5F65 /* File.swift */; };
+		84D7F5A321329D95008D5F65 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F5A221329D94008D5F65 /* Tasks.swift */; };
 		84F62D73212A784900B42790 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F62D72212A784900B42790 /* AppDelegate.swift */; };
 		84F62D75212A784900B42790 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F62D74212A784900B42790 /* ViewController.swift */; };
 		84F62D78212A784900B42790 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F62D76212A784900B42790 /* Main.storyboard */; };
@@ -27,6 +31,10 @@
 		84922ACF212BCABC0044E0F4 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		84922AD1212BE6710044E0F4 /* SimpleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleViewController.swift; sourceTree = "<group>"; };
 		84922AD3212C043D0044E0F4 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		84D7F59721325911008D5F65 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		84D7F59921328574008D5F65 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		84D7F59E21328D01008D5F65 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		84D7F5A221329D94008D5F65 /* Tasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
 		84F62D6F212A784900B42790 /* Hello.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hello.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F62D72212A784900B42790 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F62D74212A784900B42790 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +68,38 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		84D7F59B2132857E008D5F65 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84922ACF212BCABC0044E0F4 /* TableViewController.swift */,
+				84922AD1212BE6710044E0F4 /* SimpleViewController.swift */,
+				84922AD3212C043D0044E0F4 /* CustomTableViewCell.swift */,
+				841A12D7212D1E9E00D45464 /* DetailViewController.swift */,
+				84D7F59721325911008D5F65 /* LoginViewController.swift */,
+				84D7F59921328574008D5F65 /* SettingsViewController.swift */,
+				84F62D74212A784900B42790 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		84D7F59C2132858B008D5F65 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				84D7F5A221329D94008D5F65 /* Tasks.swift */,
+				84F62D84212A810300B42790 /* Demo.swift */,
+				84657B262131117000ADC87E /* product.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		84D7F59D21328CEA008D5F65 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				84D7F59E21328D01008D5F65 /* File.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		84F62D66212A784900B42790 = {
 			isa = PBXGroup;
 			children = (
@@ -81,18 +121,14 @@
 		84F62D71212A784900B42790 /* Hello */ = {
 			isa = PBXGroup;
 			children = (
+				84D7F59D21328CEA008D5F65 /* Extensions */,
+				84D7F59C2132858B008D5F65 /* Models */,
+				84D7F59B2132857E008D5F65 /* Controllers */,
 				84F62D72212A784900B42790 /* AppDelegate.swift */,
-				84F62D74212A784900B42790 /* ViewController.swift */,
 				84F62D76212A784900B42790 /* Main.storyboard */,
 				84F62D79212A784C00B42790 /* Assets.xcassets */,
 				84F62D7B212A784C00B42790 /* LaunchScreen.storyboard */,
 				84F62D7E212A784C00B42790 /* Info.plist */,
-				84F62D84212A810300B42790 /* Demo.swift */,
-				84922ACF212BCABC0044E0F4 /* TableViewController.swift */,
-				84922AD1212BE6710044E0F4 /* SimpleViewController.swift */,
-				84922AD3212C043D0044E0F4 /* CustomTableViewCell.swift */,
-				841A12D7212D1E9E00D45464 /* DetailViewController.swift */,
-				84657B262131117000ADC87E /* product.swift */,
 			);
 			path = Hello;
 			sourceTree = "<group>";
@@ -183,10 +219,20 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Hello/Pods-Hello-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -218,13 +264,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84D7F59821325911008D5F65 /* LoginViewController.swift in Sources */,
 				84922AD4212C043D0044E0F4 /* CustomTableViewCell.swift in Sources */,
 				84657B272131117000ADC87E /* product.swift in Sources */,
+				84D7F59A21328574008D5F65 /* SettingsViewController.swift in Sources */,
+				84D7F5A321329D95008D5F65 /* Tasks.swift in Sources */,
 				84922AD2212BE6710044E0F4 /* SimpleViewController.swift in Sources */,
 				84F62D75212A784900B42790 /* ViewController.swift in Sources */,
 				84F62D73212A784900B42790 /* AppDelegate.swift in Sources */,
 				84F62D85212A810300B42790 /* Demo.swift in Sources */,
 				84922AD0212BCABC0044E0F4 /* TableViewController.swift in Sources */,
+				84D7F59F21328D01008D5F65 /* File.swift in Sources */,
 				841A12D8212D1E9E00D45464 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

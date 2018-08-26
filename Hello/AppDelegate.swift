@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,8 +17,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        let realm = try! Realm()
+        
+        // New Object
+        let task = Tasks()
+        task.name = "Test Realm DB"
+        task.title = "First time to use Realm DB"
+        
+        // Add to collection
+        do{
+            try realm.write{
+                realm.add(task)
+            }
+        }catch{
+            print(error.localizedDescription)
+        }
+        
+        // Retrieve all tasks
+        let allTasks = realm.objects(Tasks.self)
+        
+        // Edit first task
+        if let firstTask = allTasks.first{
+            try! realm.write{
+                firstTask.name = "New task name"
+            }
+        }
+        
+        // loop all task
+        for task in allTasks{
+            print("Task name: \(task.name)")
+        }
+        
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        let handled: Bool = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options [UIApplicationOpenURLOptionsKey.sourceApplication] as! String?, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        
+        return handled
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
